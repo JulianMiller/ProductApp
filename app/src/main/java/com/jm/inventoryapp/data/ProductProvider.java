@@ -129,13 +129,13 @@ public class ProductProvider extends ContentProvider {
     private Uri insertProduct(Uri uri, ContentValues values) {
         // Check that the name is not null
         String name = values.getAsString(ProductEntry.COLUMN_PRODUCT_NAME);
-        if (name == null) {
+        if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Product requires a name");
         }
 
         // Check that the price is not null
         String price = values.getAsString(ProductEntry.COLUMN_PRODUCT_PRICE);
-        if (price == null) {
+        if (price == null || price.isEmpty()) {
             throw new IllegalArgumentException("Product requires a price");
         }
 
@@ -147,13 +147,13 @@ public class ProductProvider extends ContentProvider {
 
         // Check that the supplier is not null
         String supplier = values.getAsString(ProductEntry.COLUMN_PRODUCT_SUPPLIER);
-        if (supplier == null) {
+        if (supplier == null || supplier.isEmpty()) {
             throw new IllegalArgumentException("Product requires a supplier");
         }
 
         // Check that the supplier phone is not null
         String phone = values.getAsString(ProductEntry.COLUMN_PRODUCT_SUPPLIER_PHONE);
-        if (phone == null) {
+        if (phone == null || phone.isEmpty()) {
             throw new IllegalArgumentException("Product requires a phone number");
         }
 

@@ -61,6 +61,8 @@ public class EditorActivity extends AppCompatActivity implements
     /** Boolean flag that keeps track of whether the product has been edited (true) or not (false) */
     private boolean mProductHasChanged = false;
 
+    private boolean okToSave = false;
+
     ImageButton decrementQuantity;
     ImageButton incrementQuantity;
     ImageButton callButton;
@@ -291,8 +293,8 @@ public class EditorActivity extends AppCompatActivity implements
             case R.id.action_save:
                 // Save product to database
                 saveProduct();
-                // Exit activity
-                finish();
+                if(okToSave) {finish();}
+
                 return true;
             // Respond to a click on the "Delete" menu option
             case R.id.action_delete:
