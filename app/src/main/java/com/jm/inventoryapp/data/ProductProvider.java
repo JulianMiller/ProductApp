@@ -206,7 +206,7 @@ public class ProductProvider extends ContentProvider {
         // check that the name value is not null.
         if (values.containsKey(ProductEntry.COLUMN_PRODUCT_NAME)) {
             String name = values.getAsString(ProductEntry.COLUMN_PRODUCT_NAME);
-            if (name == null) {
+            if (name == null || name.isEmpty()) {
                 throw new IllegalArgumentException("Product requires a name");
             }
         }
@@ -215,7 +215,7 @@ public class ProductProvider extends ContentProvider {
         // check that the price value is not null.
         if (values.containsKey(ProductEntry.COLUMN_PRODUCT_PRICE)) {
             String price = values.getAsString(ProductEntry.COLUMN_PRODUCT_PRICE);
-            if (price == null) {
+            if (price == null || price.isEmpty()) {
                 throw new IllegalArgumentException("Product requires a price");
             }
         }
@@ -234,7 +234,7 @@ public class ProductProvider extends ContentProvider {
         // check that the supplier value is not null.
         if (values.containsKey(ProductEntry.COLUMN_PRODUCT_SUPPLIER)) {
             String supplier = values.getAsString(ProductEntry.COLUMN_PRODUCT_SUPPLIER);
-            if (supplier == null) {
+            if (supplier == null || supplier.isEmpty()) {
                 throw new IllegalArgumentException("Product requires a supplier");
             }
         }
@@ -243,7 +243,7 @@ public class ProductProvider extends ContentProvider {
         // check that the price value is not null.
         if (values.containsKey(ProductEntry.COLUMN_PRODUCT_SUPPLIER_PHONE)) {
             String phone = values.getAsString(ProductEntry.COLUMN_PRODUCT_SUPPLIER_PHONE);
-            if (phone == null) {
+            if (phone == null || phone.isEmpty()) {
                 throw new IllegalArgumentException("Product requires a phone number");
             }
         }
