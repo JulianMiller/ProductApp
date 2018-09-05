@@ -195,12 +195,13 @@ public class EditorActivity extends AppCompatActivity implements
         // Create a ContentValues object where column names are the keys,
         // and product attributes from the editor are the values.
         ContentValues values = new ContentValues();
-        int quantity = 0;
+        //int quantity = 0;
         values.put(ProductEntry.COLUMN_PRODUCT_NAME, nameString);
         values.put(ProductEntry.COLUMN_PRODUCT_PRICE, priceString);
         values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER, supplierString);
         values.put(ProductEntry.COLUMN_PRODUCT_SUPPLIER_PHONE, phoneString);
-        values.put(ProductEntry.COLUMN_PRODUCT_QUANTITY, quantity);
+        values.put(ProductEntry.COLUMN_PRODUCT_QUANTITY, quantityString);
+
 
         // Determine if this is a new or existing product by checking if mCurrentProductUri is null or not
         if (mCurrentProductUri == null) {
@@ -218,24 +219,26 @@ public class EditorActivity extends AppCompatActivity implements
                 Toast.makeText(this, getString(R.string.editor_insert_product_successful),
                         Toast.LENGTH_SHORT).show();
             }
+            finish();
         }
 
-            // Otherwise this is an EXISTING product, so update the product with content URI: mCurrentProductUri
-            // and pass in the new ContentValues. Pass in null for the selection and selection args
-            // because mCurrentProductUri will already identify the correct row in the database that
-            // we want to modify.
+        // Otherwise this is an EXISTING product, so update the product with content URI: mCurrentProductUri
+        // and pass in the new ContentValues. Pass in null for the selection and selection args
+        // because mCurrentProductUri will already identify the correct row in the database that
+        // we want to modify.
 
-            if (mCurrentProductUri != null &&
-                    TextUtils.isEmpty(nameString) || TextUtils.isEmpty(priceString) ||
-                    TextUtils.isEmpty(quantityString) || TextUtils.isEmpty(supplierString) ||
-                    TextUtils.isEmpty(phoneString)) {
-                Toast.makeText(this, getString(R.string.editor_cannot_be_null), Toast.LENGTH_SHORT).show();
+        if (mCurrentProductUri != null &&
+                TextUtils.isEmpty(nameString) || TextUtils.isEmpty(priceString) ||
+                TextUtils.isEmpty(quantityString) || TextUtils.isEmpty(supplierString) ||
+                TextUtils.isEmpty(phoneString)) {
+            Toast.makeText(this, getString(R.string.editor_cannot_be_null), Toast.LENGTH_SHORT).show();
 
-            } else {
+        } else {
 
-                Toast.makeText(this, getString(R.string.editor_insert_product_successful),
-                        Toast.LENGTH_SHORT).show();
-            }
+            Toast.makeText(this, getString(R.string.editor_insert_product_successful),
+                    Toast.LENGTH_SHORT).show();
+        }
+        finish();
     }
 
     private void decrementQuantity() {
